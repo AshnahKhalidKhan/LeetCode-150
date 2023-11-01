@@ -6,11 +6,11 @@ class Solution
         int iteratingBackwards = nums.length - 1;
         for (int i = 0; i < nums.length; i++)
         {
-            if (i < j && nums[i] != val)
+            if (i <= iteratingBackwards && nums[i] != val)
             {
                 k++;
             }
-            else if (i < j && nums[i] == val)
+            else if (i <= iteratingBackwards && nums[i] == val)
             {
                 System.out.println(nums[i] + " " + nums[iteratingBackwards]);
                 nums[i] = nums[iteratingBackwards];
