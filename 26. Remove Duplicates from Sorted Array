@@ -10,10 +10,6 @@ class Solution
             if (nums[i] != currentNumber)
             {
                 k++;
-                for (int j = indexAfterLastUniqueNumber; j < i; j++)
-                {
-                    nums[j] = -10000;
-                }
                 nums[indexAfterLastUniqueNumber] = nums[i];
                 currentNumber = nums[i];
                 indexAfterLastUniqueNumber++;
