@@ -2,6 +2,45 @@ class Solution
 {
     public int[] twoSum(int[] nums, int target) 
     {
-        
+        int maxNumber = -1000000001;
+        for (int i = 0; i < nums.length; i++)
+        {
+            if (nums[i] > maxNumber)
+            {
+                maxNumber = nums[i];
+            }
+        }
+        System.out.println("maxNumber: " + maxNumber);
+        int[] psuedoHashTable = new int[maxNumber + 1];
+        for (int i = 0; i < psuedoHashTable.length; i++)
+        {
+            psuedoHashTable[i] = -1;
+        }
+        for (int i = 0; i < psuedoHashTable.length; i++)
+        {
+            System.out.print(psuedoHashTable[i] + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < nums.length; i++)
+        {
+            psuedoHashTable[nums[i]] = i;
+        }
+        System.out.println();
+        for (int i = 0; i < psuedoHashTable.length; i++)
+        {
+            System.out.print(psuedoHashTable[i] + " ");
+        }
+        int[] answer = {0, 0};
+        for (int i = 0; i < nums.length; i++)
+        {
+            int checkIndex = Math.abs(target - nums[i]);
+            if (checkIndex > -1 && psuedoHashTable[checkIndex] != -1 && i != psuedoHashTable[checkIndex])
+            {
+                answer[0] = i;
+                answer[1] = psuedoHashTable[checkIndex];
+                break;
+            }
+        }
+        return answer;
     }
 }
