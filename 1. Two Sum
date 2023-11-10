@@ -2,20 +2,30 @@ class Solution
 {
     public int[] twoSum(int[] nums, int target) 
     {
-        int maxNumber = -1000000001;
         int minNumber = 1000000001;
+        int maxNumber = -1000000001;
         for (int i = 0; i < nums.length; i++)
         {
-            if (nums[i] > maxNumber)
-            {
-                maxNumber = nums[i];
-            }
             if (nums[i] < minNumber)
             {
                 minNumber = nums[i];
             }
+            if (nums[i] > maxNumber)
+            {
+                maxNumber = nums[i];
+            }
         }
-        // System.out.println("maxNumber: " + maxNumber);
+        System.out.println("minNumber: " + minNumber);
+        System.out.println("maxNumber: " + maxNumber);
+        int[] psuedoHashTable;
+        if (minNumber < 0)
+        {
+            psuedoHashTable = new int[-(minNumber) + maxNumber + 1];
+        }
+        else
+        {
+            psuedoHashTable = new int[maxNumber + 1];
+        }
         // int[] psuedoHashTable = new int[maxNumber + 1];
         // for (int i = 0; i < psuedoHashTable.length; i++)
         // {
