@@ -26,26 +26,29 @@ class Solution
         {
             psuedoHashTable = new int[maxNumber + 1];
         }
-        // int[] psuedoHashTable = new int[maxNumber + 1];
-        // for (int i = 0; i < psuedoHashTable.length; i++)
-        // {
-        //     psuedoHashTable[i] = -1;
-        // }
-        // for (int i = 0; i < psuedoHashTable.length; i++)
-        // {
-        //     System.out.print(psuedoHashTable[i] + " ");
-        // }
-        // System.out.println();
-        // for (int i = 0; i < nums.length; i++)
-        // {
-        //     psuedoHashTable[nums[i]] = i;
-        // }
-        // System.out.println();
-        // for (int i = 0; i < psuedoHashTable.length; i++)
-        // {
-        //     System.out.print(psuedoHashTable[i] + " ");
-        // }
-        // int[] answer = {0, 0};
+        for (int i = 0; i < psuedoHashTable.length; i++)
+        {
+            psuedoHashTable[i] = -1;
+        }
+        if (minNumber < 0)
+        {
+            for (int i = 0; i < nums.length; i++)
+            {
+                psuedoHashTable[nums[i] + (-(minNumber))] = i;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < nums.length; i++)
+            {
+                psuedoHashTable[nums[i]] = i;
+            }
+        }
+        int[] answer = {0, 0};
+        if (minNumber < 0)
+        {
+            
+        }
         // for (int i = 0; i < nums.length; i++)
         // {
         //     int checkIndex = Math.abs(target - nums[i]);
