@@ -26,6 +26,7 @@ class Solution
         {
             psuedoHashTable = new int[maxNumber + 1];
         }
+        System.out.println("Problem where");
         for (int i = 0; i < psuedoHashTable.length; i++)
         {
             psuedoHashTable[i] = -1;
@@ -50,7 +51,7 @@ class Solution
             for (int i = 0; i < nums.length; i++)
             {
                 int checkIndex = target - nums[i] + (-(minNumber));
-                if (checkIndex > -1 && psuedoHashTable[checkIndex] != -1 && i != psuedoHashTable[checkIndex])
+                if (checkIndex > -1 && checkIndex < psuedoHashTable.length && psuedoHashTable[checkIndex] != -1 && i != psuedoHashTable[checkIndex])
                 {
                     answer[0] = i;
                     answer[1] = psuedoHashTable[checkIndex];
@@ -62,8 +63,8 @@ class Solution
         {
             for (int i = 0; i < nums.length; i++)
             {
-                int checkIndex = Math.abs(target - nums[i]);
-                if (checkIndex > -1 && psuedoHashTable[checkIndex] != -1 && i != psuedoHashTable[checkIndex])
+                int checkIndex = target - nums[i];
+                if (checkIndex > -1 && checkIndex < psuedoHashTable.length && psuedoHashTable[checkIndex] != -1 && i != psuedoHashTable[checkIndex])
                 {
                     answer[0] = i;
                     answer[1] = psuedoHashTable[checkIndex];
@@ -72,30 +73,5 @@ class Solution
             }
         }
         return answer;
-        // int[] differences = new int[nums.length];
-        // for (int i = 0; i < nums.length; i++)
-        // {
-        //     differences[i] = target - nums[i];
-        //     //nums = [-3,4,3,90]
-        //     //target = 0
-        //     //maxNumber = 90
-        //     //minNumber = -3
-        //     //Wnat to declare an array of size -3, -2, ..., 90
-        //     //This size is (|-3| + 1) + (90 + 1) = 95
-        //     //When storing numbers,
-        //     // If number n is positive then store index of n on (i + min)th array cell
-        //     // If number n is negative then store index of n on |i|th array cell
-        //     //So array indexes, and array values become:
-        //     //nums: [-3, 4, 3, -90]
-        //     //indexes: [0, 1, 2, 3]
-        //     //hashTable indexes: [3, 7, 6, 93]
-        //     //On each we'll check:
-        //     // 0 - (-3) = 3
-        //     //3 + |minNumber| = 3 + 3 = 6
-        //     //Value at 6 exists?
-        //     //Answer[0] = index current
-        //     //Answer[1] = hashTableindex[target - nums[index current] + |minNumber|]
-        // }
-        // return nums;
     }
 }
