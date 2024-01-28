@@ -2,6 +2,25 @@ class Solution
 {
     public String gcdOfStrings(String str1, String str2) 
     {
-        
+        int index = 0;
+        String x = "";
+        while (index < str1.length() && index < str2.length() && str1.charAt(index) == str2.charAt(index))
+        {
+            x = x + str1.charAt(index);
+            index++;
+        }
+        return x;
     }
 }
+
+/*
+    The truth is, I suck at problem-solving. I hold a Gold Medal in my entire batch that amounts
+    to nothing, simply because I let my mind go numb as I progressed through this degree. I'm boring.
+    And there's no denying it. The little sparks of joy and ambition that you might see? Temporary
+    and artifical. Nothing is sustainable. Nothing is permanent. Nothing is real. Nothing feels good
+    anymore. Here I am writing my thoughts into a comment in a coding exercise. Why? Because I cannot
+    say this anywhere else. Because I cannot feel this way at this point. Because it is useless to
+    reflect on things I cannot change. Because this is the time to DO, not to feel. Because I have
+    already wasted enough time already. Because I am a failure, and I must work extra hard now if I am
+    to ever change that...
+*/
