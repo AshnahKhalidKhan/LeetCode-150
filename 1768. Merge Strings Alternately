@@ -2,21 +2,19 @@ class Solution
 {
     public String mergeAlternately(String word1, String word2) 
     {
-        int word1Index = 0;
-        int word2Index = 0;
+        int index = 0;
         String mergedString = "";
-        while (word1Index < word1.length() || word2Index < word2.length())
+        while (index < word1.length() || index < word2.length())
         {
-            if (word1Index < word1.length())
+            if (index < word1.length())
             {
-                mergedString = mergedString + word1.charAt(word1Index);
-                word1Index++;
+                mergedString = mergedString + word1.charAt(index);
             }
-            if (word2Index < word2.length())
+            if (index < word2.length())
             {
-                mergedString = mergedString + word2.charAt(word2Index);
-                word2Index++;
+                mergedString = mergedString + word2.charAt(index);
             }
+            index++;
         }
         return mergedString;
     }
