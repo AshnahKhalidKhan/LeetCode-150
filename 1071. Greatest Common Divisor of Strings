@@ -9,6 +9,9 @@ class Solution
             x = x + str1.charAt(index);
             index++;
         }
+
+
+        //
         return x;
     }
 }
