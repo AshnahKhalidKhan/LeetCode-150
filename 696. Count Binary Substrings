@@ -1,0 +1,54 @@
+class Solution 
+{
+    public int countBinarySubstrings(String s) 
+    {
+        int i = 0;
+        int n = 0;
+        int zeros = 0;
+        int ones = 0;
+        int zerosIndex = 0;
+        int onesIndex = 0;
+        while (i < s.length())
+        {
+            if (s.charAt(i) == '0')
+            {
+                zerosIndex = i;
+                while (zerosIndex < s.length() && s.charAt(zerosIndex) == '0')
+                {
+                    zeros++;
+                    zerosIndex++;
+                }
+                onesIndex = zerosIndex;
+                while (onesIndex < s.length() && s.charAt(onesIndex) == '1' && zeros > ones)
+                {
+                    ones++;
+                    onesIndex++;
+                }
+                n = n + ones;
+                i = i + zeros;
+                zeros = 0;
+                ones = 0;
+            }
+            else if (s.charAt(i) == '1')
+            {
+                onesIndex = i;
+                while (onesIndex < s.length() && s.charAt(onesIndex) == '1')
+                {
+                    ones++;
+                    onesIndex++;
+                }
+                zerosIndex = onesIndex;
+                while (zerosIndex < s.length() && s.charAt(zerosIndex) == '0' && ones > zeros)
+                {
+                    zeros++;
+                    zerosIndex++;
+                }
+                n = n + zeros;
+                i = i + ones;
+                zeros = 0;
+                ones = 0;
+            }
+        }
+        return n;
+    }
+}
