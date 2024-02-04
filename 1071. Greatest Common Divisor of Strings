@@ -3,38 +3,37 @@ class Solution
     public String gcdOfStrings(String str1, String str2) 
     {
         String gcd = "";
-        int breakIndex = Math.min(str1.length(), str2.length());
-        while (str1.length() % breakIndex != 0 || str2.length() % breakIndex != 0)
+        int str1Length = str1.length();
+        int str2Length = str2.length();
+        int breakIndex = Math.min(str1Length, str2Length);
+        while (str1Length % breakIndex != 0 || str2Length % breakIndex != 0)
         {
             breakIndex--;
         }
         while (breakIndex > 0)
         {
-            if (str1.length() % breakIndex == 0 && str2.length() % breakIndex == 0)
+            if (str1Length % breakIndex == 0 && str2Length % breakIndex == 0)
             {
                 int startIndex = 0;
                 int endIndex = breakIndex;
-                if (startIndex < str1.length() && startIndex < str2.length() && endIndex <= str1.length() && endIndex <= str2.length() && str1.substring(startIndex, endIndex).equals(str2.substring(startIndex, endIndex)))
+                gcd = str1.substring(startIndex, endIndex);
+                while (startIndex < str1Length && endIndex <= str1Length && str1.substring(startIndex, endIndex).equals(gcd))
                 {
-                    gcd = str1.substring(startIndex, endIndex);
-                    while (startIndex < str1.length() && endIndex <= str1.length() && str1.substring(startIndex, endIndex).equals(gcd))
+                    startIndex = endIndex;
+                    endIndex = endIndex + breakIndex;
+                }
+                if (endIndex > str1Length && str1.substring(startIndex - breakIndex, endIndex - breakIndex).equals(gcd))
+                {
+                    startIndex = 0;
+                    endIndex = breakIndex;
+                    while (startIndex < str2Length && endIndex <= str2Length && str2.substring(startIndex, endIndex).equals(gcd))
                     {
                         startIndex = endIndex;
                         endIndex = endIndex + breakIndex;
                     }
-                    if (endIndex > str1.length() && str1.substring(startIndex - breakIndex, endIndex - breakIndex).equals(gcd))
+                    if (endIndex > str2Length && str2.substring(startIndex - breakIndex, endIndex - breakIndex).equals(gcd))
                     {
-                        startIndex = 0;
-                        endIndex = breakIndex;
-                        while (startIndex < str2.length() && endIndex <= str2.length() && str2.substring(startIndex, endIndex).equals(gcd))
-                        {
-                            startIndex = endIndex;
-                            endIndex = endIndex + breakIndex;
-                        }
-                        if (endIndex > str2.length() && str2.substring(startIndex - breakIndex, endIndex - breakIndex).equals(gcd))
-                        {
-                            return gcd;
-                        }
+                        break;
                     }
                 }
             }
