@@ -4,14 +4,13 @@ class Solution
     {
         String gcd = "";
         int breakIndex = Math.min(str1.length(), str2.length());
-        int greaterLengthString = Math.max(str1.length(), str2.length());
-        while (greaterLengthString % breakIndex != 0)
+        while (str1.length() % breakIndex != 0 || str2.length() % breakIndex != 0)
         {
             breakIndex--;
         }
         while (breakIndex > 0)
         {
-            if (greaterLengthString % breakIndex == 0)
+            if (str1.length() % breakIndex == 0 && str2.length() % breakIndex == 0)
             {
                 int startIndex = 0;
                 int endIndex = breakIndex;
@@ -23,7 +22,7 @@ class Solution
                         startIndex = endIndex;
                         endIndex = endIndex + breakIndex;
                     }
-                    if (endIndex > str1.length())
+                    if (endIndex > str1.length() && str1.substring(startIndex - breakIndex, endIndex - breakIndex).equals(gcd))
                     {
                         startIndex = 0;
                         endIndex = breakIndex;
@@ -32,7 +31,7 @@ class Solution
                             startIndex = endIndex;
                             endIndex = endIndex + breakIndex;
                         }
-                        if (endIndex > str2.length())
+                        if (endIndex > str2.length() && str2.substring(startIndex - breakIndex, endIndex - breakIndex).equals(gcd))
                         {
                             return gcd;
                         }
