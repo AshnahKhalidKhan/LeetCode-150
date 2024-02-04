@@ -2,17 +2,47 @@ class Solution
 {
     public String gcdOfStrings(String str1, String str2) 
     {
-        int index = 0;
-        String x = "";
-        while (index < str1.length() && index < str2.length() && str1.charAt(index) == str2.charAt(index))
+        String gcd = "";
+        int breakIndex = Math.min(str1.length(), str2.length());
+        int greaterLengthString = Math.max(str1.length(), str2.length());
+        while (greaterLengthString % breakIndex != 0)
         {
-            x = x + str1.charAt(index);
-            index++;
+            breakIndex--;
         }
-
-
-        //
-        return x;
+        while (breakIndex > 0)
+        {
+            if (greaterLengthString % breakIndex == 0)
+            {
+                int startIndex = 0;
+                int endIndex = breakIndex;
+                if (startIndex < str1.length() && startIndex < str2.length() && endIndex <= str1.length() && endIndex <= str2.length() && str1.substring(startIndex, endIndex).equals(str2.substring(startIndex, endIndex)))
+                {
+                    gcd = str1.substring(startIndex, endIndex);
+                    while (startIndex < str1.length() && endIndex <= str1.length() && str1.substring(startIndex, endIndex).equals(gcd))
+                    {
+                        startIndex = endIndex;
+                        endIndex = endIndex + breakIndex;
+                    }
+                    if (endIndex > str1.length())
+                    {
+                        startIndex = 0;
+                        endIndex = breakIndex;
+                        while (startIndex < str2.length() && endIndex <= str2.length() && str2.substring(startIndex, endIndex).equals(gcd))
+                        {
+                            startIndex = endIndex;
+                            endIndex = endIndex + breakIndex;
+                        }
+                        if (endIndex > str2.length())
+                        {
+                            return gcd;
+                        }
+                    }
+                }
+            }
+            breakIndex--;
+        }
+        gcd = str1.substring(0, breakIndex);
+        return gcd;
     }
 }
 
