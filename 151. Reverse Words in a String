@@ -5,34 +5,37 @@ class Solution
         String outputString = "";
         String currentWord = "";
         int stringLength = s.length();
-        boolean newWordStarted = true;
-        for (int i = 0; i < stringLength; i++)
+        boolean newWordStarted = false;
+        for (int i = 0; i < stringLength; i++) 
         {
             System.out.println("." + s.charAt(i) + ".");
-            if (s.charAt(i) == ' ')
+            if (s.charAt(i) == ' ') 
             {
-                if (newWordStarted == true)
-                {
-                    outputString = currentWord + outputString;
-                    currentWord = "";
-                    newWordStarted = false;
-                }
-                else
-                {
-                    continue;
-                }
+                // if (newWordStarted == true)
+                // {
+                // outputString = currentWord + outputString;
+                // currentWord = "";
+                // newWordStarted = false;
+                // }
+                // else
+                // {
+                newWordStarted = false;
+                continue;
+                // }
             }
-            else if (s.charAt(i) != ' ')
+            else if (s.charAt(i) != ' ') 
             {
-                if (newWordStarted == false)
+                if (newWordStarted == false) 
                 {
-                    outputString = " " + outputString;
+                    outputString = " " + currentWord + outputString;
+                    currentWord = "";
                 }
                 newWordStarted = true;
                 currentWord = currentWord + s.charAt(i);
                 if (i == stringLength - 1)
                 {
                     outputString = currentWord + outputString;
+                    currentWord = "";
                 }
             }
             System.out.println("currentWord: ." + currentWord + ". Outputstring: ." + outputString + ".");
