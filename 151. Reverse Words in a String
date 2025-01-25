@@ -19,13 +19,12 @@ class Solution
             }
             else
             {
-                if (previousCharacterWasASpace == true && outputString.length() > 0)
+                if (previousCharacterWasASpace == true)
                 {
-                    outputString = " " + outputString;
-                    currentWord = currentWord + s.charAt(i);
-                }
-                else if (previousCharacterWasASpace == true) //&& outputString.length() == 0
-                {
+                    if (outputString.length() > 0)
+                    {
+                        outputString = " " + outputString;
+                    }
                     currentWord = currentWord + s.charAt(i);
                 }
                 else if (previousCharacterWasASpace == false)
