@@ -25,7 +25,12 @@ class Solution
             {
                 if (previousCharacterWasASpace == true && outputString.length() > 0)
                 {
-                    currentWord = " " + s.charAt(i);
+                    outputString = " " + outputString;
+                    currentWord = currentWord + s.charAt(i);
+                }
+                else if (previousCharacterWasASpace == true) //&& outputString.length() == 0
+                {
+                    currentWord = currentWord + s.charAt(i);
                 }
                 else if (previousCharacterWasASpace == false)
                 {
