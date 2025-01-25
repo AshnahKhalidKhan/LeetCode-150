@@ -5,40 +5,38 @@ class Solution
         String outputString = "";
         String currentWord = "";
         int stringLength = s.length();
-        boolean newWordStarted = false;
+        boolean previousCharacterWasASpace = false;
         for (int i = 0; i < stringLength; i++) 
         {
-            System.out.println("." + s.charAt(i) + ".");
-            if (s.charAt(i) == ' ') 
+            if (s.charAt(i) == ' ')
             {
-                // if (newWordStarted == true)
-                // {
-                // outputString = currentWord + outputString;
-                // currentWord = "";
-                // newWordStarted = false;
-                // }
-                // else
-                // {
-                newWordStarted = false;
-                continue;
-                // }
-            }
-            else if (s.charAt(i) != ' ') 
-            {
-                if (newWordStarted == false) 
+                if (previousCharacterWasASpace == true)
                 {
-                    outputString = " " + currentWord + outputString;
-                    currentWord = "";
+                    continue;
                 }
-                newWordStarted = true;
-                currentWord = currentWord + s.charAt(i);
-                if (i == stringLength - 1)
+                else if (previousCharacterWasASpace == false)
                 {
                     outputString = currentWord + outputString;
                     currentWord = "";
                 }
+                previousCharacterWasASpace = true;
             }
-            System.out.println("currentWord: ." + currentWord + ". Outputstring: ." + outputString + ".");
+            else if (s.charAt(i) != ' ')
+            {
+                if (previousCharacterWasASpace == true && outputString.length() > 0)
+                {
+                    currentWord = " " + s.charAt(i);
+                }
+                else if (previousCharacterWasASpace == false)
+                {
+                    currentWord = currentWord + s.charAt(i);
+                }
+                if (i == stringLength - 1)
+                {
+                    outputString = currentWord + outputString;
+                }
+                previousCharacterWasASpace = false;
+            }
         }
         return outputString;
     }
