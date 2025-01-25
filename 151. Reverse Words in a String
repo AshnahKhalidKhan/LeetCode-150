@@ -10,11 +10,7 @@ class Solution
         {
             if (s.charAt(i) == ' ')
             {
-                if (previousCharacterWasASpace == true)
-                {
-                    continue;
-                }
-                else if (previousCharacterWasASpace == false)
+                if (previousCharacterWasASpace == false)
                 {
                     outputString = currentWord + outputString;
                     currentWord = "";
