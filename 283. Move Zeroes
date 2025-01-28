@@ -3,26 +3,35 @@ class Solution
     public void moveZeroes(int[] nums) 
     {
         int numsArrayLength = nums.length;
-        int indexOfLastZero = -1;
+        int indexOfLastZero = 0;
         for (int i = 0; i < numsArrayLength; i++)
         {
-            if (nums[i] == 0)
+            // if (nums[i] == 0)
+            // {
+            //     if (indexOfLastZero == -1)
+            //     {
+            //         indexOfLastZero = i;
+            //     }
+            //     while (i < numsArrayLength && nums[i] == 0)
+            //     {
+            //         i++;
+            //     }
+            //     if (i < numsArrayLength && nums[i] != 0)
+            //     {
+            //         nums[indexOfLastZero] = nums[i];
+            //         nums[i] = 0;
+            //         indexOfLastZero++;
+            //         i--;
+            //     }
+            // }
+            if (nums[i] != 0)
             {
-                if (indexOfLastZero == -1)
+                nums[indexOfLastZero] = nums[i];
+                if (indexOfLastZero != i)
                 {
-                    indexOfLastZero = i;
-                }
-                while (i < numsArrayLength && nums[i] == 0)
-                {
-                    i++;
-                }
-                if (i < numsArrayLength && nums[i] != 0)
-                {
-                    nums[indexOfLastZero] = nums[i];
                     nums[i] = 0;
-                    indexOfLastZero++;
-                    i--;
                 }
+                indexOfLastZero++;
             }
         }
     }
