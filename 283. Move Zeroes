@@ -6,11 +6,15 @@ class Solution
         // 1, 0, 0, 0, 3, 12, 0
         // 1, 3, 12, 0, 0, 0, 0
         int numsArrayLength = nums.length;
-        int indexOfLastZero = 0;
+        int indexOfLastZero = -1;
         for (int i = 0; i < numsArrayLength; i++)
         {
             if (nums[i] == 0)
             {
+                if (indexOfLastZero == -1)
+                {
+                    indexOfLastZero = i;
+                }
                 System.out.println(i + " hit");
                 while (i < numsArrayLength && nums[i] == 0)
                 {
