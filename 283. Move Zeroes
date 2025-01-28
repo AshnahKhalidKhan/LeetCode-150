@@ -11,27 +11,20 @@ class Solution
         {
             if (nums[i] == 0)
             {
-                while (i < numsArrayLength && nums[i] != 0)
+                System.out.println(i + " hit");
+                while (i < numsArrayLength && nums[i] == 0)
                 {
+                    System.out.println(i + " loop");
                     i++;
                 }
-                if (nums[i] != 0)
+                if (i < numsArrayLength && nums[i] != 0)
                 {
                     nums[indexOfLastZero] = nums[i];
                     nums[i] = 0;
                     indexOfLastZero++;
+                    i--;
                 }
             }
-            // if (nums[i] != 0 && indexOfLastZero > -1)
-            // {
-            //     nums[indexOfLastZero] = nums[i];
-            //     nums[i] = 0;
-            //     indexOfLastZero = i;
-            // }
-            // else //if (nums[i] == 0) or (indexOfLastZero == -1)
-            // {
-            //     indexOfLastZero = i;
-            // }
         }
     }
 }
