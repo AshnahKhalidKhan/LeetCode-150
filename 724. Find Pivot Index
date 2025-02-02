@@ -1,0 +1,48 @@
+class Solution 
+{
+    public int pivotIndex(int[] nums) 
+    {
+        int leftIndex = -1;
+        int rightIndex = nums.length;
+        int leftSum = 0;
+        int rightSum = 0;
+        int lengthOfArray = nums.length;
+        while (leftIndex < rightIndex && leftIndex < lengthOfArray && rightIndex > -1)
+        {
+            if ((leftSum == rightSum) && (rightIndex - leftIndex == 2))
+            {
+                return (leftIndex + rightIndex)/2;
+            }
+            else if (leftSum == rightSum) //&& (rightIndex - leftIndex != 2) 
+            {
+                if ((leftIndex + 1 < lengthOfArray) && (rightIndex -1 > -1) && (nums[leftIndex + 1] < nums[rightIndex - 1]))
+                {
+                    leftIndex++;
+                    leftSum = leftSum + nums[leftIndex];
+                }
+                else //if ((leftIndex + 1 < lengthOfArray) && (rightIndex -1 > -1) && (nums[rightIndex - 1] < nums[leftIndex + 1]))
+                {
+                    rightIndex--;
+                    rightSum = rightSum + nums[rightIndex];
+                }
+            }
+            else if (leftSum < rightSum)
+            {
+                leftIndex++;
+                if (leftIndex < lengthOfArray)
+                {
+                    leftSum = leftSum + nums[leftIndex];
+                }
+            }
+            else if (rightSum < leftSum)
+            {
+                rightIndex--;
+                if (rightIndex > -1)
+                {
+                    rightSum = rightSum + nums[rightIndex];
+                }
+            }
+        }
+        return -1;
+    }
+}
