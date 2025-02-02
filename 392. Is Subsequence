@@ -1,0 +1,23 @@
+class Solution 
+{
+    public boolean isSubsequence(String s, String t) 
+    {
+        int indexOfSubstring = 0;
+        int indexOfMainString = 0;
+        int lengthOfSubstring = s.length();
+        int lengthOfMainString = t.length();
+        while (indexOfSubstring < lengthOfSubstring && indexOfMainString < lengthOfMainString)
+        {
+            if (s.charAt(indexOfSubstring) == t.charAt(indexOfMainString))
+            {
+                indexOfSubstring++;
+            }
+            indexOfMainString++;
+        }
+        if (indexOfSubstring == lengthOfSubstring)
+        {
+            return true;
+        }
+        return false;
+    }
+}
