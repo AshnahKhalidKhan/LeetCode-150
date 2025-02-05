@@ -1,0 +1,31 @@
+class Solution 
+{
+    public int maxArea(int[] height) 
+    {
+        //NOTE-TO-SELF: Array size will always be 2 or more.
+        int leftLine = 0;
+        int rightLine = 1;
+        int totalLines = height.length;
+        for (int line = 2; line < totalLines; line++)
+        {
+            // leftLine, rightLine, line
+            // height[leftLine], height[rightLine], height[line]
+            
+            // if (height[line] > leftLine)
+            // {
+
+            // }
+            // else if (height[line] > rightLine)
+            // {
+
+            // }
+            // else if (height[Line])
+        }
+        if (height[leftLine] < height[rightLine])
+        {
+            return (rightLine - leftLine) * height[leftLine];
+        }
+        //else
+        return (rightLine - leftLine) * height[rightLine];
+    }
+}
