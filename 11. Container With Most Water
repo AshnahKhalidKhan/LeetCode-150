@@ -52,27 +52,30 @@ class Solution
                 }
             }
 
-
+            if (leftLine + 1 == rightLine)
+            {
+                break;
+            }
             if (height[leftLine] > height[rightLine])
             {
-                if (height[totalLines - line] < height[rightLine])
+                if (height[totalLines - 1 - line] < height[rightLine])
                 {
                     //We don't care
                 }
-                else //if (height[totalLines - line] > height[rightLine])
+                else //if (height[totalLines - 1 - line] > height[rightLine])
                 {
-                    if (height[totalLines - line] < height[leftLine])
+                    if (height[totalLines - 1 - line] < height[leftLine])
                     {
-                        currentArea = (totalLines - line - leftLine) * height[totalLines - line];
+                        currentArea = (totalLines - 1 - line - leftLine) * height[totalLines - 1 - line];
                         if (currentArea > maximumArea)
                         {
                             maximumArea = currentArea;
                             rightLine = totalLines - line;
                         }
                     }
-                    else //if (height[totalLines - line] > height[leftLine])
+                    else //if (height[totalLines - 1 - line] > height[leftLine])
                     {
-                        currentArea = (totalLines - line - leftLine) * height[leftLine];
+                        currentArea = (totalLines - 1 - line - leftLine) * height[leftLine];
                         if (currentArea > maximumArea)
                         {
                             maximumArea = currentArea;
