@@ -3,29 +3,85 @@ class Solution
     public int maxArea(int[] height) 
     {
         //NOTE-TO-SELF: Array size will always be 2 or more.
-        int leftLine = 0;
-        int rightLine = 1;
         int totalLines = height.length;
-        for (int line = 2; line < totalLines; line++)
-        {
-            // leftLine, rightLine, line
-            // height[leftLine], height[rightLine], height[line]
-            
-            // if (height[line] > leftLine)
-            // {
-
-            // }
-            // else if (height[line] > rightLine)
-            // {
-
-            // }
-            // else if (height[Line])
-        }
+        int leftLine = 0;
+        int rightLine = totalLines - 1;
+        int maximumArea = 0;
+        int currentArea = 0;
         if (height[leftLine] < height[rightLine])
         {
-            return (rightLine - leftLine) * height[leftLine];
+            maximumArea = (rightLine - leftLine) * height[leftLine];
         }
-        //else
-        return (rightLine - leftLine) * height[rightLine];
+        else //if (height[leftLine] > height[rightLine])
+        {
+            maximumArea = (rightLine - leftLine) * height[rightLine];
+        }
+        System.out.println("maximumArea:" + maximumArea);
+        for (int line = 0; line < totalLines; line++)
+        {
+            if (leftLine + 1 == rightLine)
+            {
+                break;
+            }
+            if (height[leftLine] < height[rightLine])
+            {
+                if (height[line] < height[leftLine])
+                {
+                    //We don't care
+                }
+                else //if (height[line] > height[leftLine])
+                {
+                    if (height[line] < height[rightLine])
+                    {
+                        currentArea = (rightLine - line) * height[line];
+                        if (currentArea > maximumArea)
+                        {
+                            maximumArea = currentArea;
+                            leftLine = line;
+                        }
+                    }
+                    else //if (height[line] > height[rightLine])
+                    {
+                        currentArea = (rightLine - line) * height[rightLine];
+                        if (currentArea > maximumArea)
+                        {
+                            maximumArea = currentArea;
+                            leftLine = line;
+                        }
+                    }
+                }
+            }
+
+
+            if (height[leftLine] > height[rightLine])
+            {
+                if (height[totalLines - line] < height[rightLine])
+                {
+                    //We don't care
+                }
+                else //if (height[totalLines - line] > height[rightLine])
+                {
+                    if (height[totalLines - line] < height[leftLine])
+                    {
+                        currentArea = (totalLines - line - leftLine) * height[totalLines - line];
+                        if (currentArea > maximumArea)
+                        {
+                            maximumArea = currentArea;
+                            rightLine = totalLines - line;
+                        }
+                    }
+                    else //if (height[totalLines - line] > height[leftLine])
+                    {
+                        currentArea = (totalLines - line - leftLine) * height[leftLine];
+                        if (currentArea > maximumArea)
+                        {
+                            maximumArea = currentArea;
+                            rightLine = totalLines - line;
+                        }
+                    }
+                }
+            }
+        }
+        return maximumArea;
     }
 }
