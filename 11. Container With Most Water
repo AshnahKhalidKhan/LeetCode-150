@@ -34,6 +34,7 @@ class Solution
                     if (height[line] < height[rightLine])
                     {
                         currentArea = (rightLine - line) * height[line];
+                        System.out.println("currentArea:" + currentArea);
                         if (currentArea > maximumArea)
                         {
                             maximumArea = currentArea;
@@ -43,6 +44,7 @@ class Solution
                     else //if (height[line] > height[rightLine])
                     {
                         currentArea = (rightLine - line) * height[rightLine];
+                        System.out.println("currentArea:" + currentArea);
                         if (currentArea > maximumArea)
                         {
                             maximumArea = currentArea;
@@ -50,11 +52,6 @@ class Solution
                         }
                     }
                 }
-            }
-
-            if (leftLine + 1 == rightLine)
-            {
-                break;
             }
             if (height[leftLine] > height[rightLine])
             {
@@ -67,24 +64,27 @@ class Solution
                     if (height[totalLines - 1 - line] < height[leftLine])
                     {
                         currentArea = (totalLines - 1 - line - leftLine) * height[totalLines - 1 - line];
+                        System.out.println("currentArea:" + currentArea);
                         if (currentArea > maximumArea)
                         {
                             maximumArea = currentArea;
-                            rightLine = totalLines - line;
+                            rightLine = totalLines - 1 - line;
                         }
                     }
                     else //if (height[totalLines - 1 - line] > height[leftLine])
                     {
                         currentArea = (totalLines - 1 - line - leftLine) * height[leftLine];
+                        System.out.println("currentArea:" + currentArea);
                         if (currentArea > maximumArea)
                         {
                             maximumArea = currentArea;
-                            rightLine = totalLines - line;
+                            rightLine = totalLines - 1 - line;
                         }
                     }
                 }
             }
         }
+        System.out.println("leftLine:" + leftLine + " rightLine:" + rightLine);
         return maximumArea;
     }
 }
