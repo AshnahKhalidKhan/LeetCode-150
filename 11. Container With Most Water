@@ -84,59 +84,61 @@ class Solution
             //     }
             // }
 
-            if (height[line] < height[leftLine] && height[line] < height[rightLine])
-            {
-                currentArea = (rightLine - line) * height[line];
-            }
-            else if (height[line] < height[leftLine] && height[line] > height[rightLine])
-            {
-                currentArea = (rightLine - line) * height[rightLine];
-            }
-            else if (height[line] > height[leftLine] && height[line] < height[rightLine])
-            {
-                currentArea = (rightLine - line) * height[line];
-            }
-            else if (height[line] > height[leftLine] && height[line] > height[rightLine])
-            {
-                currentArea = (rightLine - line) * height[rightLine];
-            }
-            // if (height[line] < height[rightLine])
+            // if (height[line] < height[leftLine] && height[line] < height[rightLine])
             // {
             //     currentArea = (rightLine - line) * height[line];
             // }
-            // else //(height[line] > height[rightLine])
+            // else if (height[line] < height[leftLine] && height[line] > height[rightLine])
             // {
             //     currentArea = (rightLine - line) * height[rightLine];
             // }
+            // else if (height[line] > height[leftLine] && height[line] < height[rightLine])
+            // {
+            //     currentArea = (rightLine - line) * height[line];
+            // }
+            // else if (height[line] > height[leftLine] && height[line] > height[rightLine])
+            // {
+            //     currentArea = (rightLine - line) * height[rightLine];
+            // }
+            if (height[line] < height[rightLine])
+            {
+                currentArea = (rightLine - line) * height[line];
+                // System.out.println("currentArea:" + currentArea + "leftLine:" + leftLine + " rightLine:" + rightLine);
+            }
+            else //(height[line] > height[rightLine])
+            {
+                currentArea = (rightLine - line) * height[rightLine];
+            }
             if (currentArea > maximumArea)
             {
                 maximumArea = currentArea;
                 leftLine = line;
+                System.out.println("maximumArea:" + maximumArea + "leftLine:" + leftLine + " rightLine:" + rightLine);
             }
-            if (height[totalLines - line] < height[rightLine] && height[totalLines - line] < height[leftLine])
-            {
-                currentArea = (totalLines - line - leftLine) * height[totalLines - line];
-            }
-            else if (height[totalLines - line] < height[rightLine] && height[totalLines - line] > height[leftLine])
-            {
-                currentArea = (totalLines - line - leftLine) * height[leftLine];
-            }
-            else if (height[totalLines - line] > height[rightLine] && height[totalLines - line] < height[leftLine])
-            {
-                currentArea = (totalLines - line - leftLine) * height[totalLines - line];
-            }
-            else if (height[totalLines - line] > height[rightLine] && height[totalLines - line] > height[leftLine])
-            {
-                currentArea = (totalLines - line - leftLine) * height[leftLine];
-            }
-            // if (height[totalLines - line] < height[leftLine])
+            // if (height[totalLines - line] < height[rightLine] && height[totalLines - line] < height[leftLine])
             // {
             //     currentArea = (totalLines - line - leftLine) * height[totalLines - line];
             // }
-            // else //(height[totalLines - line] > height[leftLine])
+            // else if (height[totalLines - line] < height[rightLine] && height[totalLines - line] > height[leftLine])
             // {
             //     currentArea = (totalLines - line - leftLine) * height[leftLine];
             // }
+            // else if (height[totalLines - line] > height[rightLine] && height[totalLines - line] < height[leftLine])
+            // {
+            //     currentArea = (totalLines - line - leftLine) * height[totalLines - line];
+            // }
+            // else if (height[totalLines - line] > height[rightLine] && height[totalLines - line] > height[leftLine])
+            // {
+            //     currentArea = (totalLines - line - leftLine) * height[leftLine];
+            // }
+            if (height[totalLines - line] < height[leftLine])
+            {
+                currentArea = (totalLines - line - leftLine) * height[totalLines - line];
+            }
+            else //(height[totalLines - line] > height[leftLine])
+            {
+                currentArea = (totalLines - line - leftLine) * height[leftLine];
+            }
             if (currentArea > maximumArea)
             {
                 maximumArea = currentArea;
