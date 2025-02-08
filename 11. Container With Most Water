@@ -17,9 +17,9 @@ class Solution
             maximumArea = (rightLine - leftLine) * height[rightLine];
         }
         System.out.println("maximumArea:" + maximumArea);
-        for (int line = 0; line < totalLines; line++)
+        for (int line = 1; line < totalLines; line++)
         {
-            if (leftLine + 1 == rightLine)
+            if (line + 1 == rightLine)
             {
                 break;
             }
