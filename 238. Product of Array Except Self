@@ -34,21 +34,14 @@ class Solution
         for(int i = 1; i < arrayLength; i++)
         {
             answer[i] = answer[i] * answer[i - 1] * nums[i - 1];
-            // answer[arrayLength - 1 - i] = answer[arrayLength - 1 - i] * answer[arrayLength - i] * nums[arrayLength - i];
-        }
-
-        for(int i = 0; i < arrayLength; i++)
-        {
-            System.out.print(answer[i] + ", ");
         }
 
         for(int i = 1; i < arrayLength; i++)
         {
-            // answer[i] = answer[i] * answer[i - 1] * nums[i - 1];
-            // System.out.println((arrayLength - 1 - i)+ "=" + answer[arrayLength - 1 - i] + "*" + answer[arrayLength - i] + "*" + nums[arrayLength - i]);
             suffixProduct = suffixProduct * nums[arrayLength - i];
             answer[arrayLength - 1 - i] = answer[arrayLength - 1 - i] * suffixProduct;
         }
+        
         return answer;
     }
 }
