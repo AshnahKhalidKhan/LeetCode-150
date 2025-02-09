@@ -3,25 +3,26 @@ class Solution
     public int[] productExceptSelf(int[] nums) 
     {
         /*
-        NOTE-TO-SELF:
-        What answer should look like:
-        0 - nums[1] * nums[2] * nums[3]
-        1 - nums[0] * nums[2] * nums[3]
-        2 - nums[0] * nums[1] * nums[3]
-        3 - nums[0] * nums[1] * nums[2]
-
-        Prefix product array looks like this:
-        0 - 1
-        1 - nums[0]
-        2 - nums[0] * nums[1]
-        3 - nums[0] * nums[1] * nums[2]
-
-        Suffix product array looks like this:
-        0 - nums[1] * nums[2] * nums[3]
-        1 - nums[2] * nums[3]
-        2 - nums[3]
-        3 - 1
+            NOTE-TO-SELF:
+            What answer should look like:
+            0 - nums[1] * nums[2] * nums[3]
+            1 - nums[0] * nums[2] * nums[3]
+            2 - nums[0] * nums[1] * nums[3]
+            3 - nums[0] * nums[1] * nums[2]
+    
+            Prefix product array looks like this:
+            0 - 1
+            1 - nums[0]
+            2 - nums[0] * nums[1]
+            3 - nums[0] * nums[1] * nums[2]
+    
+            Suffix product array looks like this:
+            0 - nums[1] * nums[2] * nums[3]
+            1 - nums[2] * nums[3]
+            2 - nums[3]
+            3 - 1
         */
+
         int arrayLength = nums.length;
         int[] answer = new int[arrayLength];
         int prefixProduct = 1;
@@ -29,14 +30,16 @@ class Solution
         answer[0] = 1;
         answer[arrayLength - 1] = 1;
 
-        for(int i = 1; i < arrayLength; i++)
+        for(int i = 0; i < arrayLength; i++)
         {
-            prefixProduct = prefixProduct * nums[i - 1];
-            answer[i] = prefixProduct;
+            answer[i] = 1;
         }
 
         for(int i = 1; i < arrayLength; i++)
         {
+            prefixProduct = prefixProduct * nums[i - 1];
+            answer[i] = answer[i] * prefixProduct;
+
             suffixProduct = suffixProduct * nums[arrayLength - i];
             answer[arrayLength - 1 - i] = answer[arrayLength - 1 - i] * suffixProduct;
         }
