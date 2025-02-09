@@ -2,46 +2,29 @@ class Solution
 {
     public int[] productExceptSelf(int[] nums) 
     {
-        // int completeProduct = 1;
-        // for (int i = 0; i < nums.length; i++)
-        // {
-        //     completeProduct = completeProduct * nums[i];
-        // }
-        // System.out.println(completeProduct);
-        // return nums;
+        /*
+        NOTE-TO-SELF:
+        What answer should look like:
+        0 - nums[1] * nums[2] * nums[3]
+        1 - nums[0] * nums[2] * nums[3]
+        2 - nums[0] * nums[1] * nums[3]
+        3 - nums[0] * nums[1] * nums[2]
 
-        int n = nums.length;
-        int[] prefix = new int[n];
-        int[] suffix = new int[n];
-        int[] ans = new int[n];
-        
-        prefix[0] = 1;
-        suffix[n - 1] = 1;
+        Prefix product array looks like this:
+        0 - 1
+        1 - nums[0]
+        2 - nums[0] * nums[1]
+        3 - nums[0] * nums[1] * nums[2]
 
-        // Fill prefix array
-        for (int i = 1; i < n; i++) {
-            prefix[i] = prefix[i - 1] * nums[i - 1];
-        }
+        Suffix product array looks like this:
+        0 - nums[1] * nums[2] * nums[3]
+        1 - nums[2] * nums[3]
+        2 - nums[3]
+        3 - 1
+        */
+        int arrayLength = nums.length;
+        int answer = new int[arrayLength];
 
-        // Fill suffix array
-        for (int i = n - 2; i >= 0; i--) {
-            suffix[i] = suffix[i + 1] * nums[i + 1];
-        }
-
-        System.out.println("Prefix:");
-        for (int i = 0; i < n; i++) {
-            System.out.print(prefix[i] + " ");
-        }
-
-        System.out.println("\nSuffix:");
-        for (int i = 0; i < n; i++) {
-            System.out.print(suffix[i] + " ");
-        }
-
-        // Calculate the result
-        for (int i = 0; i < n; i++) {
-            ans[i] = prefix[i] * suffix[i];
-        }
-        return ans;
+        return answer;
     }
 }
