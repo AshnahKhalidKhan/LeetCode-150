@@ -1,0 +1,85 @@
+class Solution 
+{
+    public int maxOperations(int[] nums, int k) 
+    {
+        int maxKSumPairOperations = 0;
+        // Array is not sorted
+        // Can I find a way of determing the maximum number of ways a number can be split into two numbers
+        // OR
+        // the maximum solutions to x + y = k
+        // Then iterate over the array, find that and chill
+        // But I would have to sort the array
+        // Can this be done in O(n)?
+        // I could use a HashMap maybe for all possible pairs
+        // And then just count the remaining pairs
+        // Let's brute force it first
+        // Oh just saw that the any number in the array will never be zero
+        // So I can just make them zero, as a marker or something
+        // Nice
+        // Okay, let's go
+        // 6 he lay laitay hain yaar
+        // 1 say start kartay hain
+        // 6 - 1 = 5
+        // 6 - 2 = 4
+        // 6 - 3 = 3
+        // 6 - 4 = 2 ----> repeat horaha hai ab
+        // 6 - 5 = 1 ----> again, repeating
+        // So pairs jo ayein hain possible
+        // They are [1, 5], [2, 4] and [3, 3] in any order
+        // Now if I iterate over the array
+        // nums = [3,1,3,4,3]
+        // Found 3, so I look for another 3
+        // Both 3 found so 1 K-Sum pair possible
+        // Found 1 so I look for a 5
+        // Didn't find 5 so still only 1 K-Sum pair possible
+        // Found a 4 so I look for a 2
+        // Didn't find a 2 so still same K-Sum pair value
+        // Found a 3 but no other 3 left so just 1 is the final K-Sum pair value
+        // Now in this solution,
+        // If I can just make the 'finding' part quick
+        // I could win
+        // How do I do that, bro?
+        // Hashmaps he zehen mein araha hai
+        // Jaldi jaldi value pata chal jayay gi
+        // Two-Sum wali vibes arahi hain to be honest
+        // Acha aik aur realization
+        // Negative number kabhi bhi array mein nahin hoga
+        // You know what, let me just put this into a HashMap
+        // Dekhtay hain kya hota hai
+        // Array kahaan gaya
+        // Here we go: nums = [3,1,3,4,3]
+        // Now, the hashmap would look something like this:
+        // ['1': 1], ['2': 0], ['3': 3], ['4': 1], ['5': 0]
+        // Okay now if I start checking the hashmap,
+        // I can just go
+        // I have one 1,
+        // I check if I have a 6 - 1 (i.e. k - i) = 5,
+        // I do not
+        // So I keep moving forward
+        // Then I check 2
+        // I have none of those
+        // So I keep moving forward
+        // Then I check 3
+        // I have three 3's
+        // I start checking
+        // Oh wait, I check each 3 one by one
+        // So like
+        // I have one 3,
+        // So I check if I have a 6 - 3 = 3
+        // I do
+        // So I increment my counter of Max K-Sum by 1
+        // Then I decrement my i i.e 3 and then also my k - i which is also 3 in this case (wow)
+        // Then I still have a 3
+        // But this time I do not have another 3
+        // Because my hashmap now looks like this
+        // ['1': 1], ['2': 0], ['3': 1], ['4': 1], ['5': 0]
+        // I need to do some serious condition checking here in case numbers are same for i and k - i
+        // Khair
+        // I skip this, move forward
+        // I think I'm getting the pattern
+        // Ab bus code karna hai
+        // Kartay hain, kartay hain
+        // Code bhi karlein gay
+        return maxKSumPairOperations;
+    }
+}
