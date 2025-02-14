@@ -2,7 +2,6 @@ class Solution
 {
     public int maxOperations(int[] nums, int k) 
     {
-        int maxKSumPairOperations = 0;
         // Array is not sorted
         // Can I find a way of determing the maximum number of ways a number can be split into two numbers
         // OR
@@ -80,6 +79,33 @@ class Solution
         // Ab bus code karna hai
         // Kartay hain, kartay hain
         // Code bhi karlein gay
-        return maxKSumPairOperations;
+        int numsArrayLength = nums.length;
+        // For nums.length is even, max maxKSumPairs can be zero or nums.length/2
+        // Same for odd too, actually.
+        int maxKSumPairOperations = 0;
+        int[] hashTable = new int[k];
+        for (int i = 0; i < numsArrayLength; i++)
+        {
+            if (nums[i] < k) //So if the array has any value higher than k, that's automatically rejected
+            {
+                hashTable[nums[i]]++;
+            }
+        }
+        // for (int i = 0; i < hashTable.length; i++)
+        // {
+        //     System.out.println("[" + i + "] = " + hashTable[i]);
+        // }
+        for (int i = 1; i < k/2 + 1; i++)
+        {
+            if (i == (k - i))
+            {
+                maxKSumPairOperations = maxKSumPairOperations + (hashTable[i] % 2);
+            }
+            else
+            {
+                maxKSumPairOperations = maxKSumPairOperations + Math.abs(hashTable[i] - hashTable[k - i]);
+            }
+        }
+        return (numsArrayLength / 2) - maxKSumPairOperations;
     }
 }
