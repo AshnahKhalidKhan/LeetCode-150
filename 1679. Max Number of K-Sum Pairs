@@ -80,6 +80,7 @@ class Solution
         // Kartay hain, kartay hain
         // Code bhi karlein gay
         int numsArrayLength = nums.length;
+        System.out.println(numsArrayLength);
         // For nums.length is even, max maxKSumPairs can be zero or nums.length/2
         // Same for odd too, actually.
         int maxKSumPairOperations = 0;
@@ -95,17 +96,32 @@ class Solution
         // {
         //     System.out.println("[" + i + "] = " + hashTable[i]);
         // }
+        // System.out.println();
         for (int i = 1; i < k/2 + 1; i++)
         {
+            // System.out.println();
+            // System.out.println("[" + i + "] = " + hashTable[i]);
+            // System.out.println("[" + (k - i) + "] = " + hashTable[k - i]);
             if (i == (k - i))
             {
-                maxKSumPairOperations = maxKSumPairOperations + (hashTable[i] % 2);
+                // System.out.println(maxKSumPairOperations + (hashTable[i] % 2));
+                // maxKSumPairOperations = maxKSumPairOperations + (hashTable[i] % 2);
+                maxKSumPairOperations = maxKSumPairOperations + (hashTable[i] / 2);
             }
             else
             {
-                maxKSumPairOperations = maxKSumPairOperations + Math.abs(hashTable[i] - hashTable[k - i]);
+                // System.out.println(maxKSumPairOperations + Math.abs(hashTable[i] - hashTable[k - i]));
+                // maxKSumPairOperations = maxKSumPairOperations + Math.abs(hashTable[i] - hashTable[k - i]);
+                if (hashTable[i] > hashTable[k - i])
+                {
+                    maxKSumPairOperations = maxKSumPairOperations + hashTable[k - i];
+                }
+                else //if (hashTable[i] <= hashTable[k - i])
+                {
+                    maxKSumPairOperations = maxKSumPairOperations + hashTable[i];
+                }
             }
         }
-        return (numsArrayLength / 2) - maxKSumPairOperations;
+        return maxKSumPairOperations;
     }
 }
