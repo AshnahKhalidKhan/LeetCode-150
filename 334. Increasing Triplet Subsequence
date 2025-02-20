@@ -2,9 +2,9 @@ class Solution
 {
     public boolean increasingTriplet(int[] nums) 
     {
-        int i = 0;
-        int j = 1;
-        int k = 2;
+        int iIndex = -1;
+        int jIndex = -1;
+        int kIndex = -1;
         int numsArrayLength = nums.length;
         if (numsArrayLength < 3)
         {
@@ -21,6 +21,28 @@ class Solution
         6 = 6
         Oh wait, I can't. O(1) space complexity needed.
         */
-        return true;
+        for (int i = 0; i < numsArrayLength; i++)
+        {
+            iIndex = i;
+            for (int j = i + 1; j < numsArrayLength; j++)
+            {
+                if (nums[j] > nums[iIndex])
+                {
+                    jIndex = j;
+                    for (int k = j + 1; k < numsArrayLength; k++)
+                    {
+                        if (nums[k] > nums[jIndex])
+                        {
+                            kIndex = k;
+                            if (nums[iIndex] < nums[jIndex] && nums[jIndex] < nums[kIndex])
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
     }
 }
