@@ -1,0 +1,115 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution 
+{
+    public ListNode deleteMiddle(ListNode head) 
+    {
+        // ListNode tail = head;
+        // while (tail.next != null)
+        // {
+        //     tail = tail.next;
+        // }
+        // So the pattern I'm seeing is 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5 and so on
+        // Now how do I iterate this way?
+        // If there is a 4th node, then the index = 2 node needs to be deleted
+        // If there is a 6th node, then the index = 3 needs to be deleted
+        // But how do I keep track, all without a second pass?
+        // ListNode mid = head;
+        // ListNode tail = head.next;
+        // int numberOfTermsAhead = 0;
+        // while (tail.next != null)
+        // {
+        //     for (int i = 0; i < numberOfTermsAhead; i++)
+        //     {
+        //         mid = mid.next;
+        //     }
+        //     numberOfTermsAhead++;
+        // }
+        // System.out.println(mid.val);
+        // return head;
+        // ListNode mid = head;
+        // while (mid.next != null)
+        // {
+        //     mid = mid.next;
+        //     System.out.println(mid.val);
+        // }
+        // ListNode mid = head;
+        // ListNode tail = head;
+        // while (mid != null && mid.next != null && tail != null && tail.next != null)
+        // {
+        //     System.out.println(mid.val);
+        //     System.out.println(tail.val);
+        //     System.out.println();
+        //     mid = mid.next.next;
+        //     tail = tail.next;
+        // }
+        // if (mid == null)
+        // {
+        //     System.out.println("Mid == null");
+        // }
+        // else if (mid.next == null)
+        // {
+        //     System.out.println(mid.val + " Mid.next == null");
+        // }
+        // if (tail == null)
+        // {
+        //     System.out.println("tail == null");
+        // }
+        // else if (tail.next == null)
+        // {
+        //     System.out.println(tail.val + " tail.next == null");
+        // }
+        // ListNode nodesAfterMid = mid.next;
+        // while(nodesAfterMid.next != null && nodesAfterMid.next.next != null)
+        // {
+        //    nodesAfterMid = nodesAfterMid.next.next;
+        //    mid = mid.next;
+        // }
+        // mid.next = mid.next.next;
+        if (head.next == null)
+        {
+            head = head.next;
+            return head;
+        }
+        ListNode mid = head;
+        ListNode tail_speed2x = mid.next;
+        while (tail_speed2x.next != null && tail_speed2x.next.next != null)
+        {
+            // System.out.println(mid.val + " " + tail_speed2x.val);
+            mid = mid.next;
+            tail_speed2x = tail_speed2x.next.next;
+        }
+        mid.next = mid.next.next;
+        /*
+        mid = head
+        tail = mid
+        mid = mid.next
+        tail = tail.next.next
+        mid 0, 1, 2, 3, 4, 5
+        tail 0, 2, 4, 6, 8, 10
+
+        mid = head
+        tail = mid.next
+        mid = mid.next
+        tail = tail.next.next
+        mid 0, 1, 2, 3, 4, 5
+        tail 1, 3, 5, 7, 9, 11
+        mid.next = mid.next.mext
+        0.next = 0.next.next = 2
+        1.next = 1.next.next = 3
+        1.next = 3.next.next = 5
+        2.next = 0.next.next = 2
+        3.next = 0.next.next = 2
+        4.next = 0.next.next = 2
+        */
+        return head;
+    }
+}
