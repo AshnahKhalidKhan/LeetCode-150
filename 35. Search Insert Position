@@ -1,0 +1,35 @@
+class Solution
+{
+    public int searchInsert(int[] nums, int target)
+    {
+        /*
+            Sorted array
+            No repeating values
+            Target value
+            Return index of target value
+            O(log n)
+            Sorted and O(log n) --> Binary search 
+        */
+        int lengthOfNums = nums.length;
+        int leftElement = 0;
+        int rightElement = nums.length - 1;
+        int middleElement = leftElement + (rightElement - leftElement)/2;
+        while (leftElement <= rightElement)
+        {
+            if (target == nums[middleElement])
+            {
+                return middleElement;
+            }
+            else if (target > nums[middleElement])
+            {
+                leftElement = middleElement + 1;
+            }
+            else //if (target < nums[middleElement])
+            {
+                rightElement = middleElement - 1;
+            }
+            middleElement = leftElement + (rightElement - leftElement)/2;
+        }
+        return middleElement;
+    }
+}
