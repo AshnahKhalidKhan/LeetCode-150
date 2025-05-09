@@ -1,0 +1,37 @@
+/* The isBadVersion API is defined in the parent class VersionControl.
+      boolean isBadVersion(int version); */
+
+public class Solution extends VersionControl
+{
+    public int firstBadVersion(int n)
+    {
+        /*
+            Versions are all in order - sorted array
+            First occurence of target value
+            [0, 0, 1, 1, 1, 1, 1, 1] ---> n = 8
+            I can keep splitting it
+            [0, 0, 1, 1], 1, 1, 1]
+            [0, 0,[1, 1], 1, 1, 1]
+            "Latest version fails quality check" --> so isBadVersion(rightVersion) will always be true
+            Also I'm noticing here that the list here starts with 1 instead of an array starting with zero.
+            Umm... it worked because instead of updating rightVersion with middleVersion + 1, we just set it directly to middleVersion.
+            When I am dry-running it, I can see that could be because it's always going to be "bad" at the end and we just need to get to that value or whatever is before it.
+        */
+        int leftVersion = 0;
+        int rightVersion = n; //5 = [0, 0, 0, 1, 1]
+        int middleVersion = leftVersion + (rightVersion - leftVersion)/2;
+        while (leftVersion < rightVersion)
+        {
+            if (isBadVersion(middleVersion) == true)
+            {
+                rightVersion = middleVersion;
+            }
+            else //if (isBadVersion(middleVersion) == false)
+            {
+                leftVersion = middleVersion + 1;
+            }
+            middleVersion = leftVersion + (rightVersion - leftVersion)/2;
+        }
+        return middleVersion;
+    }
+}
