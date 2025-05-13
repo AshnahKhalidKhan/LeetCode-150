@@ -1,0 +1,45 @@
+class Solution 
+{
+    public int[] plusOne(int[] digits) 
+    {
+        /*
+            Straight-up, my intuition is to traverse the array in reverse.
+            And I can then start adding the number from the last to each previous index of the array.
+            I'm going to dry-run this a little bit.
+        */
+        int lengthOfDigitsArray = digits.length;
+        if (digits[lengthOfDigitsArray - 1] < 9)
+        {
+            digits[lengthOfDigitsArray - 1]++;
+            return digits;
+        }
+        else
+        {
+            String newNumber = "";
+            for (int i = lengthOfDigitsArray - 1; i > -1; i--)
+            {
+                if (i == 0 && digits[i] > 9)
+                {
+                    newNumber = "10" + newNumber;
+                }
+                else if ( i != 0 && digits[i] + 1 > 9)
+                {
+                    newNumber = "0" + newNumber;
+                    digits[i - 1]++;
+                }
+                else
+                {
+                    newNumber = Integer.toString(digits[i]) + newNumber;
+                }
+            }
+            System.out.println(newNumber);
+            int newNumberLength = newNumber.length();
+            int[] newNumberArray = new int[newNumberLength];
+            for (int i = 0; i < newNumberLength; i++)
+            {
+                newNumberArray[i] = Character.getNumericValue(newNumber.charAt(i));
+            }
+            return newNumberArray;
+        }
+    }
+}
