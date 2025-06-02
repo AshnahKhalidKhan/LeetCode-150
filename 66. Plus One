@@ -8,13 +8,13 @@ class Solution
             I'm going to dry-run this a little bit.
         */
         int lengthOfDigitsArray = digits.length;
-        if (digits[lengthOfDigitsArray - 1] < 9)
-        {
-            digits[lengthOfDigitsArray - 1]++;
-            return digits;
-        }
-        else
-        {
+        // if (digits[lengthOfDigitsArray - 1] < 9)
+        // {
+        //     digits[lengthOfDigitsArray - 1]++;
+        //     return digits;
+        // }
+        // if (true)
+        // {
             /*
                 I'm going to dry-run these possibilities cause they seem troublesome:
                 [9]
@@ -52,7 +52,7 @@ class Solution
                 }
                 newNumberString = digits[i] + newNumberString;
             }
-            System.out.println(newNumberString);
+            // System.out.println(newNumberString);
             int lengthOfnewNumberString = newNumberString.length();
             int[] newNumberArray = new int[lengthOfnewNumberString];
             for (int i = 0; i < lengthOfnewNumberString; i++)
@@ -60,6 +60,6 @@ class Solution
                 newNumberArray[i] = Integer.parseInt(String.valueOf(newNumberString.charAt(i)));
             }
             return newNumberArray;
-        }
+        // }
     }
 }
