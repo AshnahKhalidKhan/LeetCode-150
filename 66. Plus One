@@ -15,29 +15,49 @@ class Solution
         }
         else
         {
-            String newNumber = "";
+            /*
+                I'm going to dry-run these possibilities cause they seem troublesome:
+                [9]
+
+                [1, 9]
+
+                [1, 9, 9]
+                [1, 9+1, 0]
+                [1+1, 0, 0]
+
+                [9, 9, 9]
+                [9, 9+1, 0]
+                [9+1, 0, 0]
+                [1, 0, 0, 0]
+                Okay so in the first one, I can just go from the last digit to the first
+                And if there is a 9, I just add it to the next digit.
+                Let me see how I can code that.
+            */
+            String newNumberString = "";
+            digits[lengthOfDigitsArray - 1]++;
             for (int i = lengthOfDigitsArray - 1; i > -1; i--)
             {
-                if (i == 0 && digits[i] > 9)
+                if (digits[i] <= 9)
                 {
-                    newNumber = "10" + newNumber;
+                    //
                 }
-                else if ( i != 0 && digits[i] + 1 > 9)
+                else if (i == 0 && digits[i] > 9)
                 {
-                    newNumber = "0" + newNumber;
-                    digits[i - 1]++;
+                    digits[i] = 10;
                 }
-                else
+                else if (digits[i] >= 9)
                 {
-                    newNumber = Integer.toString(digits[i]) + newNumber;
+                    digits[i] = 0;
+                    digits[i - 1] = digits[i - 1] + 1;
                 }
+                newNumberString = digits[i] + newNumberString;
             }
-            System.out.println(newNumber);
-            int newNumberLength = newNumber.length();
-            int[] newNumberArray = new int[newNumberLength];
-            for (int i = 0; i < newNumberLength; i++)
+            System.out.println(newNumberString);
+            int lengthOfnewNumberString = newNumberString.length();
+            int[] newNumberArray = new int[lengthOfnewNumberString];
+            for (int i = 0; i < lengthOfnewNumberString; i++)
             {
-                newNumberArray[i] = Character.getNumericValue(newNumber.charAt(i));
+                newNumberArray[i] = Integer.parseInt(String.valueOf(newNumberString.charAt(i)));
             }
             return newNumberArray;
         }
