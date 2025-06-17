@@ -1,0 +1,59 @@
+class Solution 
+{
+    public int[] sortedSquares(int[] nums) 
+    {
+        /*
+            So... they want an O(n) solution for this...
+            They specifically say "Follow up: Squaring each element and sorting the new array is very trivial, could you find an O(n) solution using a different approach?"
+            I can use a HashMap, but that means kind-of sorting too.
+            Well I have to square these numbers anyhow.
+            Can the fact that positive and negative integers of the same value have the same square be useful?
+            Let's see...
+            Oh also, the current array input is already sorted so that is also a helpful hint.
+            If I can sort this without considering the negative sign... that should help.
+            So... I know I need to use two pointers... the question is the terminating condition.
+            I'm just squaring all numbers first.
+        */
+        int numsArrayLength = nums.length;
+        for (int i = 0; i < numsArrayLength; i++)
+        {
+            nums[i] = nums[i] * nums[i];
+        }
+        int rightIndex = numsArrayLength - 1;
+        int leftIndex = 0;
+        // while (rightIndex > leftIndex)
+        // {
+        //     if ()
+        // }
+        // int placeholderValue = 0;
+        // for (int i = 0; i < nums.length; i++)
+        // {
+        //     if (nums[leftIndex] > nums[rightIndex])
+        //     {
+        //         placeholderValue = nums[rightIndex];
+        //         nums[rightIndex] = nums[leftIndex];
+        //         nums[leftIndex] = placeholderValue;
+        //     }
+        //     else //if (nums[leftIndex] <= nums[rightIndex])
+        //     {
+        //         rightIndex--;
+        //     }
+        //     // System.out.println(nums[leftIndex] + ", " + nums[rightIndex]);
+        // }
+        int[] outputArray = new int[numsArrayLength];
+        for (int i = 0; i < numsArrayLength; i++)
+        {
+            if (nums[leftIndex] < nums[rightIndex])
+            {
+                outputArray[numsArrayLength - 1 - i] = nums[rightIndex];
+                rightIndex--;
+            }
+            else //if (nums[leftIndex] >= nums[rightIndex])
+            {
+                outputArray[numsArrayLength - 1 - i] = nums[leftIndex];
+                leftIndex++;
+            }
+        }
+        return outputArray;
+    }
+}
