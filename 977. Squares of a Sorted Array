@@ -21,25 +21,6 @@ class Solution
         }
         int rightIndex = numsArrayLength - 1;
         int leftIndex = 0;
-        // while (rightIndex > leftIndex)
-        // {
-        //     if ()
-        // }
-        // int placeholderValue = 0;
-        // for (int i = 0; i < nums.length; i++)
-        // {
-        //     if (nums[leftIndex] > nums[rightIndex])
-        //     {
-        //         placeholderValue = nums[rightIndex];
-        //         nums[rightIndex] = nums[leftIndex];
-        //         nums[leftIndex] = placeholderValue;
-        //     }
-        //     else //if (nums[leftIndex] <= nums[rightIndex])
-        //     {
-        //         rightIndex--;
-        //     }
-        //     // System.out.println(nums[leftIndex] + ", " + nums[rightIndex]);
-        // }
         int[] outputArray = new int[numsArrayLength];
         for (int i = 0; i < numsArrayLength; i++)
         {
